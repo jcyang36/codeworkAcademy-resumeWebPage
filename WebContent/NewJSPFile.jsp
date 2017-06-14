@@ -9,7 +9,6 @@
 <body>
 <p>${FirstLine}<br/>
 ${email}</p>
-
 <p>
 ${education}<br/>
 ${classof}

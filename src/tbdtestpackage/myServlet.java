@@ -45,7 +45,6 @@ public class myServlet extends HttpServlet {
 		String message="this is my message";
 		
 		
-		
 		request.setAttribute("FirstLine", fName+" "+middle+" "+lName);
 		request.setAttribute("email", email);
 		request.setAttribute("education",degree+" in "+field);
