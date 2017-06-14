@@ -9,5 +9,10 @@
 <body>
 <p>${FirstLine}<br/>
 ${email}</p>
+
+<p>
+${education}<br/>
+${classof}
+</p>
 </body>
 </html>
