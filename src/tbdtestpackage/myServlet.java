@@ -38,8 +38,13 @@ public class myServlet extends HttpServlet {
 		String fName=request.getParameter("firstName");
 		String middle = request.getParameter("Middle");
 		String lName=request.getParameter("lastName");
+		String email=request.getParameter("email");
 		String message="this is my message";
-		request.setAttribute("Name", fName+" "+middle+" "+lName);
+		
+		
+		
+		request.setAttribute("FirstLine", fName+" "+middle+" "+lName);
+		request.setAttribute("email", email);
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 	}
 

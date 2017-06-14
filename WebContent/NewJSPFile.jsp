@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p>${Name}</p>
+<p>${FirstLine}<br/>
+${email}</p>
 </body>
 </html>
