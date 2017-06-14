@@ -1,6 +1,12 @@
 package tbdtestpackage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/myServlet")
 public class myServlet extends HttpServlet {
 
+	
 	private static final long serialVersionUID = 1L;
 
     public myServlet() {
@@ -22,12 +29,17 @@ public class myServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
+
+			Connection con = null;
+			Statement stmt =null;
+			PreparedStatement pstmt= null;
+			ResultSet rs = null;
 		String fName=request.getParameter("firstName");
+		String middle = request.getParameter("Middle");
+		String lName=request.getParameter("lastName");
 		String message="this is my message";
-		request.setAttribute("message", fName);
-		
+		request.setAttribute("Name", fName+" "+middle+" "+lName);
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 	}
 
