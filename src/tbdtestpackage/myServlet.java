@@ -163,6 +163,39 @@ public class myServlet extends HttpServlet {
 		
 		
 		/* Processing for Work */
+		/* Processing for Skills */
+		try{Class.forName("com.mysql.jdbc.Driver");
+
+		con = DriverManager.getConnection("jdbc:mysql://localhost/WeekFourChallenge?"+ "user=root&password=password" );
+		
+		pstmt = con.prepareStatement("Insert into Skills(skillName,proficiency) values (?,?) ");
+		pstmt.setString(1, skill);
+		pstmt.setString(2, proficiency);
+
+  		pstmt.executeUpdate();
+		
+  		
+	
+
+		}catch(SQLException e){
+			e.printStackTrace();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				//rs.close();
+				pstmt.close();
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		
+		
+		/* Processing for Skills */
+		
+		
 	}
 
 }
