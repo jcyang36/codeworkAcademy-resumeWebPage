@@ -53,6 +53,10 @@ public class myServlet extends HttpServlet {
 		String workComp=request.getParameter("workComp");
 		String workDur=request.getParameter("workDur");
 		String duty=request.getParameter("duty");
+		String workTitle2=request.getParameter("workTitle2");
+		String workComp2=request.getParameter("workComp2");
+		String workDur2=request.getParameter("workDur2");
+		String duty2=request.getParameter("duty2");
 		String skill=request.getParameter("skill");
 		String proficiency=request.getParameter("proficiency");
 		String message="this is my message";
@@ -62,12 +66,18 @@ public class myServlet extends HttpServlet {
 		request.setAttribute("email", email);
 		request.setAttribute("education",degree+" in "+field);
 		request.setAttribute("classof",school+", "+YearGrad);
+		
+		
 		request.setAttribute("education2", degree2+" in "+field2);
 		request.setAttribute("classof2",school2+", "+YearGrad2);
+		
 		request.setAttribute("work" , workTitle);
 		request.setAttribute("workComp", workComp+", "+workDur);
 		request.setAttribute("duty", duty);
 		
+		request.setAttribute("work2" , workTitle2);
+		request.setAttribute("workComp2", workComp2+", "+workDur2);
+		request.setAttribute("duty2", duty2);
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 		
 		
@@ -118,7 +128,12 @@ public class myServlet extends HttpServlet {
   		pstmt.executeUpdate();
 		
   		
-	
+  		pstmt = con.prepareStatement("Insert into Education(degree,field,school,YearGrad) values (?,?,?,?) ");
+		pstmt.setString(1, degree2);
+		pstmt.setString(2, field2);
+		pstmt.setString(3, school2);
+		pstmt.setString(4, YearGrad2);
+  		pstmt.executeUpdate();
 
 		}catch(SQLException e){
 			e.printStackTrace();

@@ -23,6 +23,12 @@ ${workComp}<br/>
 ${duty}
 </p>
 
+<p>
+${work2}<br/>
+${workComp2}<br/>
+${duty2}
+</p>
+
 <p>${skill}</p>
 <p>${proficiency}</p>
 </body>

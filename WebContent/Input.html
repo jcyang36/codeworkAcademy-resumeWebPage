@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name = "myForm" action="myServlet" id = "myform" onsubmit="return validateForm()" method="post">
-First Name: 
+<form name = "myForm" onsubmit="return validateForm()" action="myServlet" id = "myform" method="post">
+First Name (required): 
 <input type="text" name = "firstName"> <br/>
 Middle:
 <input type="text" name = "Middle"><br/>
@@ -21,11 +21,11 @@ Field of Study:
 <input type="text" name = "field"><br/>
 School:
 <input type="text" name = "school"><br/>
-Year of graduation:
+Year of graduation (required):
 <input type="text" name = "YearGrad"><br/>
 
 
-<input type="button" onclick="addInput()" value = "+"/>Add <br/>
+<input type="button" onclick="addInput()" value = "+"/>Add (required)<br/>
 
 <span id="response"></span>
 <script>
@@ -34,14 +34,16 @@ var boxName = 0;
 function addInput()
 {
      var boxName="degree"+countBox; 
-document.getElementById('response').innerHTML+='<br/><input type="text" id="'+boxName+'" name="'+boxName+'" value="'+boxName+'" "  /><br/>';
-document.getElementById('response').innerHTML+='<br/><input type="text" id="'+"field"+countBox+'" name="'+"field"+countBox+'" value="'+"field"+countBox+'" "  /><br/>';
-document.getElementById('response').innerHTML+='<br/><input type="text" id="'+"school"+countBox+'" name="'+"school"+countBox+'" value="'+"school"+countBox+'" "  /><br/>';
-document.getElementById('response').innerHTML+='<br/><input type="text" id="'+"YearGrad"+countBox+'" name="'+"YearGrad"+countBox+'" value="'+"YearGrad"+countBox+'" "  /><br/>';  
+document.getElementById('response').innerHTML+='<br/>Degree:<input type="text" id="'+boxName+'" name="'+boxName+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/>Field:<input type="text" id="'+"field"+countBox+'" name="'+"field"+countBox+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/>School:<input type="text" id="'+"school"+countBox+'" name="'+"school"+countBox+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/>Year of graduation(required:)<input type="text" id="'+"YearGrad"+countBox+'" name="'+"YearGrad"+countBox+'" "  /><br/>';  
      countBox += 1;
 }
 
 </script>
+
+
 Work<br/>
 Position title:
 <input type="text" name = "workTitle"> <br/>
@@ -51,6 +53,26 @@ Dates of employment:
 <input type="text" name = "workDur"><br/>
 Duties:
 <input type="text" name = "duty"><br/>
+
+<input type="button" onclick="addW()" value = "+"/>Add <br/>
+
+<span id="addwork"></span>
+<script>
+var countBox =2;
+var boxName = 0;
+function addW()
+{
+     
+document.getElementById('addwork').innerHTML+='<br/>Position title:<input type="text" id="'+"workTitle"+countBox +'" name="'+"workTitle"+countBox +'" "  /><br/>';
+document.getElementById('addwork').innerHTML+='<br/>Company:<input type="text" id="'+"workComp"+countBox+'" name="'+"workComp"+countBox+'" "  /><br/>';
+document.getElementById('addwork').innerHTML+='<br/>Dates of employment:<input type="text" id="'+"workDur"+countBox+'" name="'+"workDur"+countBox+'" "  /><br/>';
+document.getElementById('addwork').innerHTML+='<br/>Duties:<input type="text" id="'+"duty"+countBox+'" name="'+"duty"+countBox+'" "  /><br/>';  
+     countBox += 1;
+}
+
+</script>
+
+
 Skills<br/>
 Skill: 
 <input type="text" name = "skill"><br/>
@@ -72,7 +94,10 @@ function validateForm() {
         alert("Name must be filled out");
         return false;
     }
+
+   
 } 
+
 </script>
 
 </body>
