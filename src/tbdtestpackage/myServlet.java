@@ -55,6 +55,41 @@ public class myServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 		
 		
+		/* Processing for Names */  
+		
+		try{Class.forName("com.mysql.jdbc.Driver");
+
+		con = DriverManager.getConnection("jdbc:mysql://localhost/WeekFourChallenge?"+ "user=root&password=password" );
+		
+		pstmt = con.prepareStatement("Insert into Resumes(FirstName, Middle, LastName, email) values (?,?,?,?) ");
+		pstmt.setString(1, fName);
+		pstmt.setString(2, middle);
+		pstmt.setString(3, lName);
+		pstmt.setString(4, email);
+  		pstmt.executeUpdate();
+		
+  		
+	
+
+		}catch(SQLException e){
+			e.printStackTrace();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				//rs.close();
+				pstmt.close();
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		
+		/* Processing for Names */
+		
+		
+		/* Processing for Education */
 		try{Class.forName("com.mysql.jdbc.Driver");
 
 		con = DriverManager.getConnection("jdbc:mysql://localhost/WeekFourChallenge?"+ "user=root&password=password" );
@@ -84,7 +119,7 @@ public class myServlet extends HttpServlet {
 			}
 		}
 		
-		
+		/* Processing for Education  */
 	}
 
 }
