@@ -13,5 +13,11 @@ ${email}</p>
 ${education}<br/>
 ${classof}
 </p>
+<p>
+${work}<br/>
+${workComp}<br/>
+${duty}
+</p>
+
 </body>
 </html>

@@ -45,6 +45,12 @@ public class myServlet extends HttpServlet {
 		String field=request.getParameter("field");
 		String school=request.getParameter("school");
 		String YearGrad=request.getParameter("YearGrad");
+		String workTitle=request.getParameter("workTitle");
+		String workComp=request.getParameter("workComp");
+		String workDur=request.getParameter("workDur");
+		String duty=request.getParameter("duty");
+		String skill=request.getParameter("skill");
+		String proficiency=request.getParameter("proficiency");
 		String message="this is my message";
 		
 		
@@ -52,6 +58,10 @@ public class myServlet extends HttpServlet {
 		request.setAttribute("email", email);
 		request.setAttribute("education",degree+" in "+field);
 		request.setAttribute("classof",school+", "+YearGrad);
+		request.setAttribute("work" , workTitle);
+		request.setAttribute("workComp", workComp+", "+workDur);
+		request.setAttribute("duty", duty);
+		
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 		
 		
@@ -120,6 +130,39 @@ public class myServlet extends HttpServlet {
 		}
 		
 		/* Processing for Education  */
+		
+		/* Processing for Work */
+		try{Class.forName("com.mysql.jdbc.Driver");
+
+		con = DriverManager.getConnection("jdbc:mysql://localhost/WeekFourChallenge?"+ "user=root&password=password" );
+		
+		pstmt = con.prepareStatement("Insert into Work(WorkTitle,WorkComp,WorkDur,duty) values (?,?,?,?) ");
+		pstmt.setString(1, workTitle);
+		pstmt.setString(2, workComp);
+		pstmt.setString(3, workDur);
+		pstmt.setString(4, duty);
+  		pstmt.executeUpdate();
+		
+  		
+	
+
+		}catch(SQLException e){
+			e.printStackTrace();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				//rs.close();
+				pstmt.close();
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+		
+		
+		/* Processing for Work */
 	}
 
 }
