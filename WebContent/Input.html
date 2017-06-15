@@ -23,6 +23,20 @@ School:
 <input type="text" name = "school"><br/>
 Year of graduation:
 <input type="text" name = "YearGrad"><br/>
+
+<input type="button" onclick="addInput()" value = "+"/>Add <br/>
+
+<span id="response"></span>
+<script>
+var countBox =1;
+var boxName = 0;
+function addInput()
+{
+     var boxName="education"+countBox; 
+document.getElementById('response').innerHTML+='<br/><input type="text" id="'+boxName+'" name="'+boxName+'" "  /><br/>';
+     countBox += 1;
+}
+</script>
 Work<br/>
 Position title:
 <input type="text" name = "workTitle"> <br/>
@@ -39,6 +53,11 @@ Proficiency:
 <input type="text" name = "proficiency"><br/>
 
 <input type="submit" value="Create">
+
+
 </form>
+
+
+
 </body>
 </html>
