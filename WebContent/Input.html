@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="myServlet" method="post">
+<form name = "myForm" action="myServlet" id = "myform" onsubmit="return validateForm()" method="post">
 First Name: 
 <input type="text" name = "firstName"> <br/>
 Middle:
@@ -24,18 +24,23 @@ School:
 Year of graduation:
 <input type="text" name = "YearGrad"><br/>
 
+
 <input type="button" onclick="addInput()" value = "+"/>Add <br/>
 
 <span id="response"></span>
 <script>
-var countBox =1;
+var countBox =2;
 var boxName = 0;
 function addInput()
 {
-     var boxName="education"+countBox; 
-document.getElementById('response').innerHTML+='<br/><input type="text" id="'+boxName+'" name="'+boxName+'" "  /><br/>';
+     var boxName="degree"+countBox; 
+document.getElementById('response').innerHTML+='<br/><input type="text" id="'+boxName+'" name="'+boxName+'" value="'+boxName+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/><input type="text" id="'+"field"+countBox+'" name="'+"field"+countBox+'" value="'+"field"+countBox+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/><input type="text" id="'+"school"+countBox+'" name="'+"school"+countBox+'" value="'+"school"+countBox+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/><input type="text" id="'+"YearGrad"+countBox+'" name="'+"YearGrad"+countBox+'" value="'+"YearGrad"+countBox+'" "  /><br/>';  
      countBox += 1;
 }
+
 </script>
 Work<br/>
 Position title:
@@ -56,8 +61,19 @@ Proficiency:
 
 
 </form>
+<script>
 
 
+
+
+function validateForm() {
+    var x = document.forms["myForm"]["firstName"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+} 
+</script>
 
 </body>
 </html>

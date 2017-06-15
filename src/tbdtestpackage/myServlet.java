@@ -45,6 +45,10 @@ public class myServlet extends HttpServlet {
 		String field=request.getParameter("field");
 		String school=request.getParameter("school");
 		String YearGrad=request.getParameter("YearGrad");
+		String degree2= request.getParameter("degree2");
+		String field2= request.getParameter("field2");
+		String school2= request.getParameter("school2");
+		String YearGrad2= request.getParameter("YearGrad2");
 		String workTitle=request.getParameter("workTitle");
 		String workComp=request.getParameter("workComp");
 		String workDur=request.getParameter("workDur");
@@ -58,6 +62,8 @@ public class myServlet extends HttpServlet {
 		request.setAttribute("email", email);
 		request.setAttribute("education",degree+" in "+field);
 		request.setAttribute("classof",school+", "+YearGrad);
+		request.setAttribute("education2", degree2+" in "+field2);
+		request.setAttribute("classof2",school2+", "+YearGrad2);
 		request.setAttribute("work" , workTitle);
 		request.setAttribute("workComp", workComp+", "+workDur);
 		request.setAttribute("duty", duty);
