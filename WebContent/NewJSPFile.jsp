@@ -29,7 +29,10 @@ ${workComp2}<br/>
 ${duty2}
 </p>
 
-<p>${skill}</p>
-<p>${proficiency}</p>
+<p>${skill}
+${proficiency}</p>
+
+<p>${skill2}
+${proficiency2}</p>
 </body>
 </html>

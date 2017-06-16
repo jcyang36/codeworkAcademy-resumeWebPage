@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.servlet.ServletException;
@@ -20,7 +21,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/myServlet")
 public class myServlet extends HttpServlet {
-
+	String newDegree="";
+	 ArrayList <String> degreeAr = new ArrayList <String> ();
+	 ArrayList <String> fieldAr = new ArrayList <String> ();
+	 ArrayList <String> schoolAr = new ArrayList <String> ();
+	 ArrayList <String> yearGradAr = new ArrayList <String> ();
+	 ArrayList <String> workTitleAr = new ArrayList <String> ();
+	 ArrayList <String> workCompAr = new ArrayList <String> ();
+	 ArrayList <String> workDurAr = new ArrayList <String> ();
+	 ArrayList <String> dutyAr = new ArrayList <String> ();
+	 ArrayList <String> skillAr = new ArrayList <String> ();
+	 ArrayList <String> proficiencyAr = new ArrayList <String> ();
 	
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +42,7 @@ public class myServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 
 			Connection con = null;
 			Statement stmt =null;
@@ -45,10 +56,19 @@ public class myServlet extends HttpServlet {
 		String field=request.getParameter("field");
 		String school=request.getParameter("school");
 		String YearGrad=request.getParameter("YearGrad");
-		String degree2= request.getParameter("degree2");
+		
+		 for(int countBox =2;countBox<3; countBox++){
+		
+		
+		     newDegree="degree"+countBox;
+		     
+		     countBox++;
+		degreeAr.add(request.getParameter(newDegree));}
+		
 		String field2= request.getParameter("field2");
 		String school2= request.getParameter("school2");
 		String YearGrad2= request.getParameter("YearGrad2");
+		
 		String workTitle=request.getParameter("workTitle");
 		String workComp=request.getParameter("workComp");
 		String workDur=request.getParameter("workDur");
@@ -59,6 +79,8 @@ public class myServlet extends HttpServlet {
 		String duty2=request.getParameter("duty2");
 		String skill=request.getParameter("skill");
 		String proficiency=request.getParameter("proficiency");
+		String skill2=request.getParameter("skill2");
+		String proficiency2=request.getParameter("proficiency2");
 		String message="this is my message";
 		
 		
@@ -67,10 +89,10 @@ public class myServlet extends HttpServlet {
 		request.setAttribute("education",degree+" in "+field);
 		request.setAttribute("classof",school+", "+YearGrad);
 		
-		
-		request.setAttribute("education2", degree2+" in "+field2);
+		for (String content:degreeAr){
+		request.setAttribute("education2", content+" in "+field2);}
 		request.setAttribute("classof2",school2+", "+YearGrad2);
-		
+		 
 		request.setAttribute("work" , workTitle);
 		request.setAttribute("workComp", workComp+", "+workDur);
 		request.setAttribute("duty", duty);
@@ -78,6 +100,14 @@ public class myServlet extends HttpServlet {
 		request.setAttribute("work2" , workTitle2);
 		request.setAttribute("workComp2", workComp2+", "+workDur2);
 		request.setAttribute("duty2", duty2);
+		
+		request.setAttribute("skill" , skill);
+		request.setAttribute("proficiency", proficiency);
+		
+		request.setAttribute("skill2" , skill2);
+		request.setAttribute("proficiency2", proficiency2);
+		
+		
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 		
 		
@@ -129,7 +159,8 @@ public class myServlet extends HttpServlet {
 		
   		
   		pstmt = con.prepareStatement("Insert into Education(degree,field,school,YearGrad) values (?,?,?,?) ");
-		pstmt.setString(1, degree2);
+		for(String content :degreeAr){
+  		pstmt.setString(1, content);}
 		pstmt.setString(2, field2);
 		pstmt.setString(3, school2);
 		pstmt.setString(4, YearGrad2);
@@ -164,7 +195,12 @@ public class myServlet extends HttpServlet {
 		pstmt.setString(4, duty);
   		pstmt.executeUpdate();
 		
-  		
+  		pstmt = con.prepareStatement("Insert into Work(WorkTitle,WorkComp,WorkDur,duty) values (?,?,?,?) ");
+		pstmt.setString(1, workTitle2);
+		pstmt.setString(2, workComp2);
+		pstmt.setString(3, workDur2);
+		pstmt.setString(4, duty2);
+  		pstmt.executeUpdate();
 	
 
 		}catch(SQLException e){
@@ -192,6 +228,11 @@ public class myServlet extends HttpServlet {
 		pstmt = con.prepareStatement("Insert into Skills(skillName,proficiency) values (?,?) ");
 		pstmt.setString(1, skill);
 		pstmt.setString(2, proficiency);
+		pstmt.executeUpdate();
+		
+		pstmt = con.prepareStatement("Insert into Skills(skillName,proficiency) values (?,?) ");
+		pstmt.setString(1, skill2);
+		pstmt.setString(2, proficiency2);
 
   		pstmt.executeUpdate();
 		

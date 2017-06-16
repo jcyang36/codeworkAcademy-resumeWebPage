@@ -78,7 +78,22 @@ Skill:
 <input type="text" name = "skill"><br/>
 Proficiency: 
 <input type="text" name = "proficiency"><br/>
+<input type="button" onclick="addS()" value = "+"/>Add <br/>
 
+<span id="addskill"></span>
+<script>
+var countBox =2;
+var boxName = 0;
+function addS()
+{
+     
+document.getElementById('addskill').innerHTML+='<br/>Skill:<input type="text"     " name="'+"skill"+countBox +'" "  /><br/>';
+document.getElementById('addskill').innerHTML+='<br/>Proficiency:<input type="text"      " name="'+"proficiency"+countBox+'" "  /><br/>';
+ 
+     countBox += 1;
+}
+
+</script>
 <input type="submit" value="Create">
 
 
@@ -92,11 +107,24 @@ function validateForm() {
     var x = document.forms["myForm"]["firstName"].value;
     if (x == "") {
         alert("Name must be filled out");
-        return false;
+        s = false;
     }
-
+    var y = document.forms["myForm"]["YearGrad"].value;
+    if(isNaN(y)){
+    	 alert("Year must be an integer");
+         s = false;
+         
+    }
+	if (s ==false){
+		return false;
+	}
    
-} 
+}
+
+
+
+
+
 
 </script>
 

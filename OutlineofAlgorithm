@@ -1,0 +1,19 @@
+Get the fields from form
+For each field in form
+	If field is not blank
+		Add each field to arraylist.  
+
+	If field is blank
+		Add '' to arraylist
+
+Foreach content in arraylist
+
+Request get parameter of content
+
+Foreach content in arraylist 
+
+put content in database
+
+Foreach content in arraylist
+
+Set attribute of content
