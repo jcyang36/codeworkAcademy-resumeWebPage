@@ -1,5 +1,5 @@
 # codeworkAcademy-resumeWebPage
-/*The form displays input properly only if the add button is clicked.
+/*The form displays input properly only if the add button is clicked once for each section.
  Clean project before running so that the output does not keep compounding itself.*/
 
 This program gets input of resume information from a web form, checks that the fields are not blank, and adds them to an array list.
