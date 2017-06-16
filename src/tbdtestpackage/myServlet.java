@@ -122,7 +122,7 @@ public class myServlet extends HttpServlet {
 				 }else{dutyAr.add("");	  
 				  }
 			 }	  
-			    System.out.println(workTitleAr);
+			   
 			 	
 			 /* Input for work */
 		
@@ -134,7 +134,37 @@ public class myServlet extends HttpServlet {
 		String message="this is my message";
 		
 		
+	/* Processing to clear database 
+		try{Class.forName("com.mysql.jdbc.Driver");
+
+		con = DriverManager.getConnection("jdbc:mysql://localhost/WeekFourChallenge?"+ "user=root&password=password" );
+		
+		stmt = con.createStatement();		
+  		stmt.executeUpdate("truncate table Resumes");
+  		stmt = con.createStatement();
+  		stmt.executeUpdate("truncate table Education");
+  		stmt = con.createStatement();
+  		stmt.executeUpdate("truncate table Work");
+  		stmt = con.createStatement();
+  		stmt.executeUpdate("truncate table Skills");
+  		
 	
+
+		}catch(SQLException e){
+			e.printStackTrace();
+			
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				//rs.close();
+				pstmt.close();
+				con.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+		}
+	 Processing to clear database	*/
 		
 		
 		/* Processing for Names */  
