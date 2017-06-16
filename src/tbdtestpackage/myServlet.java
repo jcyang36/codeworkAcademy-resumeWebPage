@@ -25,6 +25,11 @@ public class myServlet extends HttpServlet {
 	String newField;
     String newSchool;
     String newYearGrad;
+    String newWorkTitle;
+	String newWorkComp;
+    String newWorkDur;
+    String newDuty;
+
 	 ArrayList <String> degreeAr = new ArrayList <String> ();
 	 ArrayList <String> fieldAr = new ArrayList <String> ();
 	 ArrayList <String> schoolAr = new ArrayList <String> ();
@@ -55,6 +60,8 @@ public class myServlet extends HttpServlet {
 		String middle = request.getParameter("Middle");
 		String lName=request.getParameter("lastName");
 		String email=request.getParameter("email");
+		
+		/* Input for education */
 		String degree=request.getParameter("degree");
 		String field=request.getParameter("field");
 		String school=request.getParameter("school");
@@ -66,20 +73,60 @@ public class myServlet extends HttpServlet {
 		     newSchool="school"+countBox;
 		     newYearGrad="YearGrad"+countBox;
 		     countBox++;
-		degreeAr.add(request.getParameter(newDegree));
-		fieldAr.add(request.getParameter(newField));
-		schoolAr.add(request.getParameter(newSchool));
-		yearGradAr.add(request.getParameter(newYearGrad));
-		 }
-		System.out.println(fieldAr);
-		String workTitle=request.getParameter("workTitle");
-		String workComp=request.getParameter("workComp");
-		String workDur=request.getParameter("workDur");
-		String duty=request.getParameter("duty");
-		String workTitle2=request.getParameter("workTitle2");
-		String workComp2=request.getParameter("workComp2");
-		String workDur2=request.getParameter("workDur2");
-		String duty2=request.getParameter("duty2");
+		     if (newDegree!=""){
+		    	 degreeAr.add(request.getParameter(newDegree));}
+		     else{degreeAr.add("");
+		     }
+		     if (newField!=""){
+		 		fieldAr.add(request.getParameter(newField));
+		 	}else{fieldAr.add("");	 
+		      }
+		     if (newSchool!=""){
+			 		schoolAr.add(request.getParameter(newSchool));
+			 }else{schoolAr.add("");	  
+			  }
+		     if (newYearGrad!=""){
+			 		yearGradAr.add(request.getParameter(newYearGrad));
+			 }else{yearGradAr.add("");	  
+			  }
+		 }		
+		 
+		 /*  Input for education   */
+		 
+		 /* Input for work */
+		 	String workTitle=request.getParameter("workTitle");
+			String workComp=request.getParameter("workComp");
+			String workDur=request.getParameter("workDur");
+			String duty=request.getParameter("duty");
+			
+			 for(int countBox =2;countBox<3; countBox++){
+			     newWorkTitle="workTitle"+countBox;
+			     newWorkComp="workComp"+countBox;
+			     newWorkDur="workDur"+countBox;
+			     newDuty="duty"+countBox;
+			     countBox++;
+			     if (newWorkTitle!=""){
+			    	 workTitleAr.add(request.getParameter(newWorkTitle));}
+			     else{workTitleAr.add("");
+			     }
+			     if (newWorkComp!=""){
+			 		workCompAr.add(request.getParameter(newWorkComp));
+			 	}else{workCompAr.add("");	 
+			      }
+			     if (newWorkDur!=""){
+				 		workDurAr.add(request.getParameter(newWorkDur));
+				 }else{workDurAr.add("");	  
+				  }
+			     if (newDuty!=""){
+				 		dutyAr.add(request.getParameter(newDuty));
+				 }else{dutyAr.add("");	  
+				  }
+			 }	  
+			    System.out.println(workTitleAr);
+			 	
+			 /* Input for work */
+		
+
 		String skill=request.getParameter("skill");
 		String proficiency=request.getParameter("proficiency");
 		String skill2=request.getParameter("skill2");
@@ -144,7 +191,7 @@ public class myServlet extends HttpServlet {
 		pstmt.setString(3,schoolAr.get(i));
 		pstmt.setString(4, yearGradAr.get(i));}
   		pstmt.executeUpdate();
-
+		
 		}catch(SQLException e){
 			e.printStackTrace();
 			
@@ -174,13 +221,16 @@ public class myServlet extends HttpServlet {
 		pstmt.setString(4, duty);
   		pstmt.executeUpdate();
 		
+  		
   		pstmt = con.prepareStatement("Insert into Work(WorkTitle,WorkComp,WorkDur,duty) values (?,?,?,?) ");
-		pstmt.setString(1, workTitle2);
-		pstmt.setString(2, workComp2);
-		pstmt.setString(3, workDur2);
-		pstmt.setString(4, duty2);
+		for(int i =0; i<workTitleAr.size();i++){
+  		pstmt.setString(1, workTitleAr.get(i));
+		pstmt.setString(2, workCompAr.get(i));
+		pstmt.setString(3,workDurAr.get(i));
+		pstmt.setString(4, dutyAr.get(i));}
   		pstmt.executeUpdate();
-	
+  		
+  		
 
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -257,10 +307,13 @@ public class myServlet extends HttpServlet {
 		request.setAttribute("workComp", workComp+", "+workDur);
 		request.setAttribute("duty", duty);
 		
-		request.setAttribute("work2" , workTitle2);
-		request.setAttribute("workComp2", workComp2+", "+workDur2);
-		request.setAttribute("duty2", duty2);
 		
+		content="";
+		for(int i=0; i<workTitleAr.size(); i++){
+			content=content+workTitleAr.get(i) +workCompAr.get(i)+workDurAr.get(i)+dutyAr.get(i);
+			
+		}
+		request.setAttribute("work2", content);
 		/*  Output for work  */
 		
 		/* Output for skills  */

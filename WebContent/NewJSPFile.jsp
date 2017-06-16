@@ -23,8 +23,6 @@ ${duty}
 
 <p>
 ${work2}<br/>
-${workComp2}<br/>
-${duty2}
 </p>
 
 <p>${skill}
