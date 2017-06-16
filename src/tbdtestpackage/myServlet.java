@@ -72,7 +72,7 @@ public class myServlet extends HttpServlet {
 		String school=request.getParameter("school");
 		String YearGrad=request.getParameter("YearGrad");
 		
-		 for(int countBox =2;countBox<4; countBox++){
+		 for(int countBox =2;countBox<3; countBox++){
 		     newDegree="degree"+countBox;
 		     newField="field"+countBox;
 		     newSchool="school"+countBox;
@@ -105,7 +105,7 @@ public class myServlet extends HttpServlet {
 			String workDur=request.getParameter("workDur");
 			String duty=request.getParameter("duty");
 			
-			 for(int countBox =2;countBox<3; countBox++){
+			 for(int countBox =2;countBox<4; countBox++){
 			     newWorkTitle="workTitle"+countBox;
 			     newWorkComp="workComp"+countBox;
 			     newWorkDur="workDur"+countBox;
@@ -138,7 +138,7 @@ public class myServlet extends HttpServlet {
 				String proficiency=request.getParameter("proficiency");
 				
 				
-				 for(int countBox =2;countBox<3; countBox++){
+				 for(int countBox =2;countBox<4; countBox++){
 				     newSkill="skill"+countBox;
 				     newProficiency="proficiency"+countBox;
 				    
