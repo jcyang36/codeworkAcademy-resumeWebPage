@@ -142,11 +142,11 @@ public class myServlet extends HttpServlet {
 				    
 				     countBox++;
 				     if (skill!=""){
-				    	 skillAr.add(request.getParameter(skill));}
+				    	 skillAr.add(request.getParameter(newSkill));}
 				     else{skillAr.add("");
 				     }
 				     if (proficiency!=""){
-				 		proficiencyAr.add(request.getParameter(proficiency));
+				 		proficiencyAr.add(request.getParameter(newProficiency));
 				 	}else{proficiencyAr.add("");	 
 				      }
 				   
@@ -361,12 +361,12 @@ public class myServlet extends HttpServlet {
 		/*  Output for education  */
 		
 		/*  Output for work   */
-		request.setAttribute("work" , workTitle +" <br/>"+workComp+workDur+" <br/>"+duty);
+		request.setAttribute("work" , workTitle +" <br/>"+workComp+", "+workDur+" <br/>"+duty);
 		
 		
 		
 		for(int i=0; i<workTitleAr.size(); i++){
-			workcontent=workcontent+workTitleAr.get(i) +" <br/>"+workCompAr.get(i)+workDurAr.get(i)+" <br/>"+dutyAr.get(i);
+			workcontent=workcontent+workTitleAr.get(i) +" <br/>"+workCompAr.get(i)+", "+workDurAr.get(i)+" <br/>"+dutyAr.get(i);
 			
 		}
 		request.setAttribute("work2", workcontent);

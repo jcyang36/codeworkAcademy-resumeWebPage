@@ -10,12 +10,15 @@
 <p>${FirstLine}<br/>
 ${email}</p>
 <p>
+Education <br/>
 ${education}<br/>
 </p>
 <p>
+
 ${education2}<br/>
 </p>
 <p>
+Experience<br/>
 ${work}<br/>
 </p>
 
@@ -23,7 +26,9 @@ ${work}<br/>
 ${work2}<br/>
 </p>
 
-<p>${skill}</p>
+<p>
+Skills<br/>
+${skill}</p>
 
 <p>${skill2} 
 </p>
