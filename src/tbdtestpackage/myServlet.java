@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/myServlet")
 public class myServlet extends HttpServlet {
 	String newDegree="";
+	String newField;
+    String newSchool;
+    String newYearGrad;
 	 ArrayList <String> degreeAr = new ArrayList <String> ();
 	 ArrayList <String> fieldAr = new ArrayList <String> ();
 	 ArrayList <String> schoolAr = new ArrayList <String> ();
@@ -61,13 +64,16 @@ public class myServlet extends HttpServlet {
 		
 		
 		     newDegree="degree"+countBox;
-		     
+		     newField="field"+countBox;
+		     newSchool="school"+countBox;
+		     newYearGrad="YearGrad"+countBox;
 		     countBox++;
-		degreeAr.add(request.getParameter(newDegree));}
+		degreeAr.add(request.getParameter(newDegree));
 		
-		String field2= request.getParameter("field2");
-		String school2= request.getParameter("school2");
-		String YearGrad2= request.getParameter("YearGrad2");
+		fieldAr.add(request.getParameter("newField"));
+		schoolAr.add(request.getParameter("newSchool"));
+		yearGradAr.add(request.getParameter("newYearGrad"));
+		}
 		
 		String workTitle=request.getParameter("workTitle");
 		String workComp=request.getParameter("workComp");
@@ -84,31 +90,7 @@ public class myServlet extends HttpServlet {
 		String message="this is my message";
 		
 		
-		request.setAttribute("FirstLine", fName+" "+middle+" "+lName);
-		request.setAttribute("email", email);
-		request.setAttribute("education",degree+" in "+field);
-		request.setAttribute("classof",school+", "+YearGrad);
-		
-		for (String content:degreeAr){
-		request.setAttribute("education2", content+" in "+field2);}
-		request.setAttribute("classof2",school2+", "+YearGrad2);
-		 
-		request.setAttribute("work" , workTitle);
-		request.setAttribute("workComp", workComp+", "+workDur);
-		request.setAttribute("duty", duty);
-		
-		request.setAttribute("work2" , workTitle2);
-		request.setAttribute("workComp2", workComp2+", "+workDur2);
-		request.setAttribute("duty2", duty2);
-		
-		request.setAttribute("skill" , skill);
-		request.setAttribute("proficiency", proficiency);
-		
-		request.setAttribute("skill2" , skill2);
-		request.setAttribute("proficiency2", proficiency2);
-		
-		
-		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
+	
 		
 		
 		/* Processing for Names */  
@@ -159,11 +141,11 @@ public class myServlet extends HttpServlet {
 		
   		
   		pstmt = con.prepareStatement("Insert into Education(degree,field,school,YearGrad) values (?,?,?,?) ");
-		for(String content :degreeAr){
-  		pstmt.setString(1, content);}
-		pstmt.setString(2, field2);
-		pstmt.setString(3, school2);
-		pstmt.setString(4, YearGrad2);
+		for(int i =0; i<degreeAr.size();i++){
+  		pstmt.setString(1, degreeAr.get(i));
+		pstmt.setString(2, fieldAr.get(i));
+		pstmt.setString(3,schoolAr.get(i));
+		pstmt.setString(4, yearGradAr.get(i));}
   		pstmt.executeUpdate();
 
 		}catch(SQLException e){
@@ -256,6 +238,44 @@ public class myServlet extends HttpServlet {
 		
 		
 		/* Processing for Skills */
+		
+		/*    Output for names  */
+		
+		request.setAttribute("FirstLine", fName+" "+middle+" "+lName);
+		request.setAttribute("email", email);
+		
+		/* Output for names  */
+		
+		/* Output for education  */
+		request.setAttribute("education",degree+" in "+field);
+		request.setAttribute("classof",school+", "+YearGrad);
+		
+		for (int i=0; i<degreeAr.size(); i++){
+		request.setAttribute("education2", degreeAr.get(i)+" in "+fieldAr.get(i));
+		request.setAttribute("classof2",schoolAr.get(i)+", "+yearGradAr.get(i));}
+		
+		/*  Output for education  */
+		
+		/*  Output for work   */
+		request.setAttribute("work" , workTitle);
+		request.setAttribute("workComp", workComp+", "+workDur);
+		request.setAttribute("duty", duty);
+		
+		request.setAttribute("work2" , workTitle2);
+		request.setAttribute("workComp2", workComp2+", "+workDur2);
+		request.setAttribute("duty2", duty2);
+		
+		/*  Output for work  */
+		
+		/* Output for skills  */
+		request.setAttribute("skill" , skill);
+		request.setAttribute("proficiency", proficiency);
+		
+		request.setAttribute("skill2" , skill2);
+		request.setAttribute("proficiency2", proficiency2);
+		
+		/*  Output for skills  */
+		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 		
 		
 	}
