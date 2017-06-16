@@ -29,6 +29,8 @@ public class myServlet extends HttpServlet {
 	String newWorkComp;
     String newWorkDur;
     String newDuty;
+    String newSkill;
+    String newProficiency;
 
 	 ArrayList <String> degreeAr = new ArrayList <String> ();
 	 ArrayList <String> fieldAr = new ArrayList <String> ();
@@ -126,11 +128,30 @@ public class myServlet extends HttpServlet {
 			 	
 			 /* Input for work */
 		
-
-		String skill=request.getParameter("skill");
-		String proficiency=request.getParameter("proficiency");
-		String skill2=request.getParameter("skill2");
-		String proficiency2=request.getParameter("proficiency2");
+			 /* Input for skills*/
+			 	String skill=request.getParameter("skill");
+				String proficiency=request.getParameter("proficiency");
+				
+				
+				 for(int countBox =2;countBox<3; countBox++){
+				     newSkill="skill"+countBox;
+				     newProficiency="proficiency"+countBox;
+				    
+				     countBox++;
+				     if (skill!=""){
+				    	 skillAr.add(request.getParameter(skill));}
+				     else{skillAr.add("");
+				     }
+				     if (proficiency!=""){
+				 		proficiencyAr.add(request.getParameter(proficiency));
+				 	}else{proficiencyAr.add("");	 
+				      }
+				   
+				 }	  
+				   
+				 	
+				 /* Input for skills */
+		
 		String message="this is my message";
 		
 		
@@ -287,16 +308,16 @@ public class myServlet extends HttpServlet {
 		pstmt = con.prepareStatement("Insert into Skills(skillName,proficiency) values (?,?) ");
 		pstmt.setString(1, skill);
 		pstmt.setString(2, proficiency);
-		pstmt.executeUpdate();
-		
-		pstmt = con.prepareStatement("Insert into Skills(skillName,proficiency) values (?,?) ");
-		pstmt.setString(1, skill2);
-		pstmt.setString(2, proficiency2);
-
   		pstmt.executeUpdate();
 		
   		
-	
+  		pstmt = con.prepareStatement("Insert into Skills(skillName,proficiency) values (?,?) ");
+		for(int i =0; i<skillAr.size();i++){
+  		pstmt.setString(1, skillAr.get(i));
+		pstmt.setString(2, proficiencyAr.get(i));}
+  		pstmt.executeUpdate();
+  		
+  		
 
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -350,9 +371,12 @@ public class myServlet extends HttpServlet {
 		request.setAttribute("skill" , skill);
 		request.setAttribute("proficiency", proficiency);
 		
-		request.setAttribute("skill2" , skill2);
-		request.setAttribute("proficiency2", proficiency2);
-		
+		content="";
+		for(int i=0; i<skillAr.size(); i++){
+			content=content+skillAr.get(i) +proficiencyAr.get(i);
+			
+		}
+		request.setAttribute("skills2", content);
 		/*  Output for skills  */
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 		
