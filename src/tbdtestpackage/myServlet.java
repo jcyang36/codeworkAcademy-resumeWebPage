@@ -61,20 +61,17 @@ public class myServlet extends HttpServlet {
 		String YearGrad=request.getParameter("YearGrad");
 		
 		 for(int countBox =2;countBox<3; countBox++){
-		
-		
 		     newDegree="degree"+countBox;
 		     newField="field"+countBox;
 		     newSchool="school"+countBox;
 		     newYearGrad="YearGrad"+countBox;
 		     countBox++;
 		degreeAr.add(request.getParameter(newDegree));
-		
-		fieldAr.add(request.getParameter("newField"));
-		schoolAr.add(request.getParameter("newSchool"));
-		yearGradAr.add(request.getParameter("newYearGrad"));
-		}
-		
+		fieldAr.add(request.getParameter(newField));
+		schoolAr.add(request.getParameter(newSchool));
+		yearGradAr.add(request.getParameter(newYearGrad));
+		 }
+		System.out.println(fieldAr);
 		String workTitle=request.getParameter("workTitle");
 		String workComp=request.getParameter("workComp");
 		String workDur=request.getParameter("workDur");
@@ -247,13 +244,12 @@ public class myServlet extends HttpServlet {
 		/* Output for names  */
 		
 		/* Output for education  */
-		request.setAttribute("education",degree+" in "+field);
-		request.setAttribute("classof",school+", "+YearGrad);
-		
+		request.setAttribute("education", degree+" in "+field+" "+school+", "+YearGrad);
+		String content="";
 		for (int i=0; i<degreeAr.size(); i++){
-		request.setAttribute("education2", degreeAr.get(i)+" in "+fieldAr.get(i));
-		request.setAttribute("classof2",schoolAr.get(i)+", "+yearGradAr.get(i));}
-		
+		content=content+degreeAr.get(i)+" in "+fieldAr.get(i)+ " "+schoolAr.get(i)+", "+yearGradAr.get(i);
+				}
+		request.setAttribute("education2", content);
 		/*  Output for education  */
 		
 		/*  Output for work   */

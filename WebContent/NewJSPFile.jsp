@@ -11,11 +11,9 @@
 ${email}</p>
 <p>
 ${education}<br/>
-${classof}<br/>
 </p>
 <p>
 ${education2}<br/>
-${classof2}<br/>
 </p>
 <p>
 ${work}<br/>
