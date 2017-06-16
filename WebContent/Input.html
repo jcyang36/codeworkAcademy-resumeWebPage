@@ -7,22 +7,22 @@
 <body>
 <form name = "myForm" onsubmit="return validateForm()" action="myServlet" id = "myform" method="post">
 First Name (required): 
-<input type="text" name = "firstName" id="first"> <br/>
+<input type="text" name = "firstName" value="first"> <br/>
 Middle:
-<input type="text" name = "Middle" id="middle"><br/>
+<input type="text" name = "Middle" value="middle"><br/>
 Last Name:
-<input type="text" name = "lastName" id="last"><br/>
+<input type="text" name = "lastName" value="last"><br/>
 Email:
-<input type="text" name = "email" id="email"><br/>
+<input type="text" name = "email" value="email"><br/>
 Education<br/>
 Degree:
-<input type="text" name = "degree" id="degree"><br/>
+<input type="text" name = "degree" value="degree"><br/>
 Field of Study:
-<input type="text" name = "field" id="field"><br/>
+<input type="text" name = "field" value="field"><br/>
 School:
-<input type="text" name = "school" id="school"><br/>
+<input type="text" name = "school" value="school"><br/>
 Year of graduation (required):
-<input type="text" name = "YearGrad" id="year"><br/>
+<input type="text" name = "YearGrad" value="2017"><br/>
 
 
 <input type="button" onclick="addInput()" value = "+"/>Add (required)<br/>
@@ -34,10 +34,10 @@ var boxName = 0;
 function addInput()
 {
      var boxName="degree"+countBox; 
-document.getElementById('response').innerHTML+='<br/>Degree:<input type="text" id="'+boxName+'" name="'+boxName+'" "  /><br/>';
-document.getElementById('response').innerHTML+='<br/>Field:<input type="text" id="'+"field"+countBox+'" name="'+"field"+countBox+'" "  /><br/>';
-document.getElementById('response').innerHTML+='<br/>School:<input type="text" id="'+"school"+countBox+'" name="'+"school"+countBox+'" "  /><br/>';
-document.getElementById('response').innerHTML+='<br/>Year of graduation(required:)<input type="text" id="'+"YearGrad"+countBox+'" name="'+"YearGrad"+countBox+'" "  /><br/>';  
+document.getElementById('response').innerHTML+='<br/>Degree:<input type="text" value="'+boxName+'" name="'+boxName+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/>Field:<input type="text" value="'+"field"+countBox+'" name="'+"field"+countBox+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/>School:<input type="text" value="'+"school"+countBox+'" name="'+"school"+countBox+'" "  /><br/>';
+document.getElementById('response').innerHTML+='<br/>Year of graduation<input type="text" value="0" name="'+"YearGrad"+countBox+'" "  /><br/>';  
      countBox += 1;
 }
 
@@ -46,13 +46,13 @@ document.getElementById('response').innerHTML+='<br/>Year of graduation(required
 
 Work<br/>
 Position title:
-<input type="text" id= "Title" name = "workTitle"> <br/>
+<input type="text" value= "Title" name = "workTitle"> <br/>
 Work Company:
-<input type="text" id = "Company" name = "workComp"><br/>
+<input type="text" value = "Company" name = "workComp"><br/>
 Dates of employment:
-<input type="text" id = "Dates" name = "workDur"><br/>
+<input type="text" value = "Dates" name = "workDur"><br/>
 Duties:
-<input type="text" id = "Duty" name = "duty"><br/>
+<input type="text" value = "Duty" name = "duty"><br/>
 
 <input type="button" onclick="addW()" value = "+"/>Add <br/>
 
@@ -63,11 +63,10 @@ var countWork =2;
 function addW()
 {
 	var boxName ="workTitle"+countWork;
-	document.getElementById('addwork').innerHTML+='<br/>Degree:<input type="text" id="'+boxName+'" name="'+boxName+'" "  /><br/>';   
-//document.getElementById('addwork').innerHTML+='<br/>Position title:<input type="text" id="'+"workTitle"+countwork +'" name="'+"workTitle"+countWork +'" "  /><br/>';
-document.getElementById('addwork').innerHTML+='<br/>Company:<input type="text" id="'+"workComp"+countWork+'" name="'+"workComp"+countWork+'" "  /><br/>';
-document.getElementById('addwork').innerHTML+='<br/>Dates of employment:<input type="text" id="'+"workDur"+countWork+'" name="'+"workDur"+countWork+'" "  /><br/>';
-document.getElementById('addwork').innerHTML+='<br/>Duties:<input type="text" id="'+"duty"+countWork+'" name="'+"duty"+countWork+'" "  /><br/>';  
+	document.getElementById('addwork').innerHTML+='<br/>Position:<input type="text" value="'+boxName+'" name="'+boxName+'" "  /><br/>';   
+document.getElementById('addwork').innerHTML+='<br/>Company:<input type="text" value="'+"workComp"+countWork+'" name="'+"workComp"+countWork+'" "  /><br/>';
+document.getElementById('addwork').innerHTML+='<br/>Dates of employment:<input type="text" value="'+"workDur"+countWork+'" name="'+"workDur"+countWork+'" "  /><br/>';
+document.getElementById('addwork').innerHTML+='<br/>Duties:<input type="text" value="'+"duty"+countWork+'" name="'+"duty"+countWork+'" "  /><br/>';  
      countWork += 1;
 }
 
@@ -77,9 +76,9 @@ document.getElementById('addwork').innerHTML+='<br/>Duties:<input type="text" id
 
 Skills<br/>
 Skill: 
-<input type="text" id = "skill" name = "skill"><br/>
+<input type="text" value = "skill" name = "skill"><br/>
 Proficiency: 
-<input type="text" id = "proficiency" name = "proficiency"><br/>
+<input type="text" value = "proficiency" name = "proficiency"><br/>
 <input type="button" onclick="addS()" value = "+"/>Add <br/>
 
 <span id="addskill"></span>
@@ -88,8 +87,8 @@ var countBox =2;
 function addS()
 {
      
-document.getElementById('addskill').innerHTML+='<br/>Skill:<input type="text"  " id="'+"skill"+countBox +'   " name="'+"skill"+countBox +'" "  /><br/>';
-document.getElementById('addskill').innerHTML+='<br/>Proficiency:<input type="text"    " name="'+"proficiency"+countBox +'  " name="'+"proficiency"+countBox+'" "  /><br/>';
+document.getElementById('addskill').innerHTML+='<br/>Skill:<input type="text"  " value="'+"skill"+countBox +'   " name="'+"skill"+countBox +'" "  /><br/>';
+document.getElementById('addskill').innerHTML+='<br/>Proficiency:<input type="text"    " value="'+"proficiency"+countBox +'  " name="'+"proficiency"+countBox+'" "  /><br/>';
  
      countBox += 1;
 }
