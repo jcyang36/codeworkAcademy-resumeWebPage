@@ -72,12 +72,13 @@ public class myServlet extends HttpServlet {
 		String school=request.getParameter("school");
 		String YearGrad=request.getParameter("YearGrad");
 		
-		 for(int countBox =2;countBox<3; countBox++){
+		 for(int countBox =2;countBox<4; countBox++){
 		     newDegree="degree"+countBox;
 		     newField="field"+countBox;
 		     newSchool="school"+countBox;
 		     newYearGrad="YearGrad"+countBox;
 		     countBox++;
+		     //these if statements don't actually get used...
 		     if (newDegree!=""){
 		    	 degreeAr.add(request.getParameter(newDegree));}
 		     else{degreeAr.add("");
@@ -110,6 +111,7 @@ public class myServlet extends HttpServlet {
 			     newWorkDur="workDur"+countBox;
 			     newDuty="duty"+countBox;
 			     countBox++;
+			   //these if statements don't actually get used...
 			     if (newWorkTitle!=""){
 			    	 workTitleAr.add(request.getParameter(newWorkTitle));}
 			     else{workTitleAr.add("");
@@ -141,6 +143,7 @@ public class myServlet extends HttpServlet {
 				     newProficiency="proficiency"+countBox;
 				    
 				     countBox++;
+				   //these if statements don't actually get used...
 				     if (skill!=""){
 				    	 skillAr.add(request.getParameter(newSkill));}
 				     else{skillAr.add("");
