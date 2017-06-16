@@ -104,19 +104,84 @@ document.getElementById('addskill').innerHTML+='<br/>Proficiency:<input type="te
 
 
 function validateForm() {
+	s=true;
     var x = document.forms["myForm"]["firstName"].value;
     if (x == "") {
-        alert("Name must be filled out");
+        alert("First name must be filled out");
         s = false;
     }
-    var y = document.forms["myForm"]["YearGrad"].value;
-    if(isNaN(y)){
+    var x = document.forms["myForm"]["lastName"].value;
+    if (x == "") {
+        alert("Last name must be filled out");
+        s = false;
+    }
+    var x = document.forms["myForm"]["email"].value;
+    if (x == "") {
+        alert("Email must be filled out");
+        s = false;
+    }
+    var x = document.forms["myForm"]["degree"].value;
+    if (x == "") {
+        alert("Degree must be filled out");
+        s = false;
+    }
+    var x = document.forms["myForm"]["field"].value;
+    if (x == "") {
+        alert("Field must be filled out");
+        s = false;
+    }
+    var x = document.forms["myForm"]["school"].value;
+    if (x == "") {
+        alert("School must be filled out");
+        s = false;
+    }
+    var x = document.forms["myForm"]["YearGrad"].value;
+    if(isNaN(x)){
     	 alert("Year must be an integer");
+         s = false;
+         
+    }
+    var x = document.forms["myForm"]["workTitle"].value;
+    if(x==""){
+    	 alert("Position must be filled out");
+         s = false;
+         
+    }
+    var x = document.forms["myForm"]["workComp"].value;
+    if(x==""){
+    	 alert("Company must be filled out");
+         s = false;
+         
+    }
+    var x = document.forms["myForm"]["workDur"].value;
+    if(x==""){
+    	 alert("Dates of employment must be filled out");
+         s = false;
+         
+    }
+    var x = document.forms["myForm"]["duty"].value;
+    if(x==""){
+    	 alert("Duty must be filled out");
+         s = false;
+         
+    }
+    var x = document.forms["myForm"]["skill"].value;
+    if(x==""){
+    	 alert("Skill must be filled out");
+         s = false;
+         
+    }
+    var x = document.forms["myForm"]["proficiency"].value;
+    if(x==""){
+    	 alert("Skill must be filled out");
          s = false;
          
     }
 	if (s ==false){
 		return false;
+	}
+	else{
+		return true;
 	}
    
 }

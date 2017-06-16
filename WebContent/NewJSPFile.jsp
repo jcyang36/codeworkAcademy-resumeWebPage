@@ -17,16 +17,13 @@ ${education2}<br/>
 </p>
 <p>
 ${work}<br/>
-${workComp}<br/>
-${duty}
 </p>
 
 <p>
 ${work2}<br/>
 </p>
 
-<p>${skill},
-${proficiency}</p>
+<p>${skill}</p>
 
 <p>${skill2} 
 </p>
