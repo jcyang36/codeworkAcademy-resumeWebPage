@@ -25,10 +25,10 @@ ${duty}
 ${work2}<br/>
 </p>
 
-<p>${skill}
+<p>${skill},
 ${proficiency}</p>
 
-<p>${skill2}
-${proficiency2}</p>
+<p>${skill2} 
+</p>
 </body>
 </html>

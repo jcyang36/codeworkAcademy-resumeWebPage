@@ -345,23 +345,21 @@ public class myServlet extends HttpServlet {
 		/* Output for names  */
 		
 		/* Output for education  */
-		request.setAttribute("education", degree+" in "+field+" "+school+", "+YearGrad);
+		request.setAttribute("education", degree+" in "+field+" <br/>"+school+", "+YearGrad);
 		String content="";
 		for (int i=0; i<degreeAr.size(); i++){
-		content=content+degreeAr.get(i)+" in "+fieldAr.get(i)+ " "+schoolAr.get(i)+", "+yearGradAr.get(i);
+		content=content+degreeAr.get(i)+" in "+fieldAr.get(i)+ " <br/>"+schoolAr.get(i)+", "+yearGradAr.get(i);
 				}
 		request.setAttribute("education2", content);
 		/*  Output for education  */
 		
 		/*  Output for work   */
-		request.setAttribute("work" , workTitle);
-		request.setAttribute("workComp", workComp+", "+workDur);
-		request.setAttribute("duty", duty);
+		request.setAttribute("work" , workTitle +" <br/>"+workComp+workDur+" <br/>"+duty);
 		
 		
 		content="";
 		for(int i=0; i<workTitleAr.size(); i++){
-			content=content+workTitleAr.get(i) +workCompAr.get(i)+workDurAr.get(i)+dutyAr.get(i);
+			content=content+workTitleAr.get(i) +" <br/>"+workCompAr.get(i)+workDurAr.get(i)+" <br/>"+dutyAr.get(i);
 			
 		}
 		request.setAttribute("work2", content);
@@ -373,10 +371,10 @@ public class myServlet extends HttpServlet {
 		
 		content="";
 		for(int i=0; i<skillAr.size(); i++){
-			content=content+skillAr.get(i) +proficiencyAr.get(i);
+			content=content+skillAr.get(i) +", "+proficiencyAr.get(i);
 			
 		}
-		request.setAttribute("skills2", content);
+		request.setAttribute("skill2", content);
 		/*  Output for skills  */
 		getServletContext().getRequestDispatcher("/NewJSPFile.jsp").forward(request,response);
 		
